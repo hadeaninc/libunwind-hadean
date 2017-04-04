@@ -45,7 +45,7 @@ DEFINE_LIBUNWIND_PRIVATE_FUNCTION(_ZN9libunwind13Registers_x866jumptoEv)
   # skip ss
   # skip eflags
   pop    %eax  # eax was already pushed on new stack
-  hadret        # eip was already pushed on new stack
+  ret        # eip was already pushed on new stack
   # skip cs
   # skip ds
   # skip es
@@ -83,14 +83,14 @@ DEFINE_LIBUNWIND_PRIVATE_FUNCTION(_ZN9libunwind16Registers_x86_646jumptoEv)
   movq   96(%rdi), %r12
   movq  104(%rdi), %r13
   movq  112(%rdi), %r14
-  movq  120(%rdi), %r15
+  # movq  120(%rdi), %r15  # reserved on Hadean
   # skip rflags
   # skip cs
   # skip fs
   # skip gs
   movq  56(%rdi), %rsp  # cut back rsp to new location
   pop    %rdi      # rdi was saved here earlier
-  hadret            # rip was saved here
+  ret            # rip was saved here
 
 
 #elif defined(__ppc__)
@@ -306,7 +306,7 @@ DEFINE_LIBUNWIND_PRIVATE_FUNCTION(_ZN9libunwind15Registers_arm646jumptoEv)
   ldr    d31,     [x0, #0x208]
 
   ldp    x0, x1,  [x0, #0x000]  // restore x0,x1
-  hadret    x30                    // jump to pc
+  ret    x30                    // jump to pc
 
 #elif defined(__arm__) && !defined(__APPLE__)
 
