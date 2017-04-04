@@ -50,7 +50,7 @@ DEFINE_LIBUNWIND_FUNCTION(unw_getcontext)
   movl  %edx, (%eax)  # store original eax
   popl  %eax
   xorl  %eax, %eax    # return UNW_ESUCCESS
-  hadret
+  ret
 
 #elif defined(__x86_64__)
 
@@ -85,7 +85,7 @@ DEFINE_LIBUNWIND_FUNCTION(unw_getcontext)
   # skip fs
   # skip gs
   xorl  %eax, %eax    # return UNW_ESUCCESS
-  hadret
+  ret
 
 # elif defined(__mips__)
 
@@ -287,7 +287,7 @@ DEFINE_LIBUNWIND_FUNCTION(unw_getcontext)
   str    d30,     [x0, #0x200]
   str    d31,     [x0, #0x208]
   mov    x0, #0                   // return UNW_ESUCCESS
-  hadret
+  ret
 
 #elif defined(__arm__) && !defined(__APPLE__)
 
