@@ -83,7 +83,7 @@ DEFINE_LIBUNWIND_PRIVATE_FUNCTION(_ZN9libunwind16Registers_x86_646jumptoEv)
   movq   96(%rdi), %r12
   movq  104(%rdi), %r13
   movq  112(%rdi), %r14
-  movq  120(%rdi), %r15
+  # movq  120(%rdi), %r15  # reserved on Hadean
   # skip rflags
   # skip cs
   # skip fs

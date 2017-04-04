@@ -77,7 +77,7 @@ DEFINE_LIBUNWIND_FUNCTION(unw_getcontext)
   movq  %r12, 96(%rdi)
   movq  %r13,104(%rdi)
   movq  %r14,112(%rdi)
-  movq  %r15,120(%rdi)
+  # movq  %r15,120(%rdi) # reserved on Hadean
   movq  (%rsp),%rsi
   movq  %rsi,128(%rdi) # store return address as rip
   # skip rflags
